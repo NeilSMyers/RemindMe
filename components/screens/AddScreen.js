@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react"
-import { View, StyleSheet, TextInput, Image } from "react-native"
+import { View, StyleSheet, TextInput, Image, ScrollView } from "react-native"
 import DateTimePicker from "@react-native-community/datetimepicker"
 import moment from "moment"
-// import * as Notifications from "expo-notifications"
+import * as Notifications from "expo-notifications"
 
 import { ThemeContext } from "../../App"
 import MButton from "../common/MButton"
@@ -18,19 +18,19 @@ const AddScreen = (props) => {
   //moment(date).format("h:mm A")
 
   const triggerNotification = () => {
-    // Notifications.scheduleNotificationAsync({
-    //   content: {
-    //     title: "I Did It",
-    //   },
-    //   trigger: {
-    //     seconds: 5,
-    //   },
-    // })
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: reminder,
+      },
+      trigger: {
+        seconds: 5,
+      },
+    })
   }
 
   return (
-    <View
-      style={{
+    <ScrollView
+      contentContainerStyle={{
         backgroundColor: theme.background,
         flex: 1,
         alignItems: "center",
@@ -71,7 +71,7 @@ const AddScreen = (props) => {
         />
         <MButton title="Add" onPress={triggerNotification} />
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
