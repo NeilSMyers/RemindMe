@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react"
 import { View, StyleSheet, TextInput, Image } from "react-native"
 import DateTimePicker from "@react-native-community/datetimepicker"
 import moment from "moment"
+// import * as Notifications from "expo-notifications"
 
 import { ThemeContext } from "../../App"
 import MButton from "../common/MButton"
@@ -15,6 +16,17 @@ const AddScreen = (props) => {
   const [toTime, setToTime] = useState(new Date())
 
   //moment(date).format("h:mm A")
+
+  const triggerNotification = () => {
+    // Notifications.scheduleNotificationAsync({
+    //   content: {
+    //     title: "I Did It",
+    //   },
+    //   trigger: {
+    //     seconds: 5,
+    //   },
+    // })
+  }
 
   return (
     <View
@@ -57,7 +69,7 @@ const AddScreen = (props) => {
           mode="time"
           onChange={(_, date) => setToTime(date)}
         />
-        <MButton title="Add" onPress={() => {}} />
+        <MButton title="Add" onPress={triggerNotification} />
       </View>
     </View>
   )
